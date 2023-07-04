@@ -1,0 +1,42 @@
+.imgcont {
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 400px; /* Adjust the height of the container as needed */
+  }
+
+  .imgclass {
+    
+    cursor: pointer;
+    border: 2px dashed black;
+    margin-right: 30px;
+    border-radius: 12px;
+    margin-bottom: 350px; /* Adjust the margin-bottom value to position the image slightly above */
+  }
+  .username {
+    margin: 10px;
+    cursor: pointer;
+    width: 400px;    
+    border: 10px double black;
+    margin-left: 350px;
+}
+.username:hover {
+    
+    outline-style: dashed;
+    background-color: aqua;
+    color: #FFF;
+  }
+
+  .COMPLAINTS h1{
+    text-align: center;
+  }
+  .COMPLAINTS{
+    padding: 10px;
+    justify-content: center;
+    border:  2px solid black;
+  }
+
+  h3{
+    padding: 20px;
+  }

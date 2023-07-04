@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Page</title>
+</head>
+<body>
+  <h3>Hello {{user.name}} <svg xmlns="http://www.w3.org/2000/svg" width="40.5" height="45" fill="currentColor" class="bi bi-person-check-fill" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"/> <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/> </svg></h3>
+  <div class="COMPLAINTS">
+    <h1><strong><b>COMPLAINTS &#11163 </b></strong></h1>
+  </div>
+
+  <br>
+  <br>
+
+  <table class="table table-bordered">
+    <thead class="table-success">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Customer Name</th>
+        <th scope="col">Customer Contact</th>
+        <th scope="col">Description</th>
+        <th scope="col">Timestamp</th>
+       
+      </tr>
+    </thead>
+    <tbody id="complaints-table-body">
+      {{#each complaints}}
+        <tr>
+          <td>{{_id}}</td>
+          <td>{{name}}</td>
+          <td>{{contact}}</td>
+          <td>{{desc}}</td>
+          <td>{{timestamp}}</td>
+                </tr>
+      {{/each}}
+    </tbody>
+  </table>
+<!--
+  <div class="pagination">
+    <button class="prev-page-button" onclick="prevPage()">&#8592; Previous</button>
+    <button class="next-page-button" onclick="nextPage()">Next &#8594;</button>
+  </div>
+
+  <script>
+    const prevPageButton = document.querySelector('.prev-page-button');
+    const nextPageButton = document.querySelector('.next-page-button');
+    let currentPage = 1;
+
+    function prevPage() {
+      if (currentPage > 1) {
+        currentPage--;
+        fetchComplaints();
+      }
+    }
+
+    function nextPage() {
+      currentPage++;
+      fetchComplaints();
+    }
+
+    function fetchComplaints() {
+      fetch(`/complaints?page=${currentPage}`)
+        .then(response => response.json())
+        .then(data => {
+          const complaintsTableBody = document.getElementById('complaints-table-body');
+          complaintsTableBody.innerHTML = '';
+
+          data.forEach(complaint => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+              <td>${complaint._id}</td>
+              <td>${complaint.name}</td>
+              <td>${complaint.contact}</td>
+              <td>${complaint.desc}</td>
+              <td>${complaint.timestamp}</td>
+            `;
+            complaintsTableBody.appendChild(row);
+          });
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+
+    fetchComplaints();
+  </script>-->
+</body>
+</html>
