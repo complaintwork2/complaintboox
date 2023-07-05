@@ -1,3 +1,4 @@
+
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -14,6 +15,11 @@ const port = process.env.PORT || 3000;
 
 const index = require('./routes/index');
 
+app.use(express.json())
+
+//const test = require('./routes/index')
+//app.use('/index', test)
+
 // View Engine
 app.engine('handlebars', exphbs({defaultLayout:'main'}));
 app.set('view engine', 'handlebars');
@@ -24,6 +30,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Body Parser Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+
+
+
 
 // Express Session
 app.use(session({
@@ -67,7 +77,9 @@ app.use(expressValidator({
   }
 }));
 
-app.use('/', index);
+const imp = require('./routes/index')
+app.use('/index', imp)
+//app.use('/', index);
 
 
 // Start Server

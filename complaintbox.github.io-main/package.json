@@ -6,8 +6,6 @@
   "scripts": {
     "build:handlebars": "handlebars views/ -f public/js/templates.js"
   },
-  
-  
   "keywords": [
     "complaint",
     "system"

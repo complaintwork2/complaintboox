@@ -6,16 +6,34 @@ const LocalStrategy = require('passport-local').Strategy;
 let User = require('../models/user');
 let Complaint = require('../models/complaint');
 let ComplaintMapping = require('../models/complaint-mapping');
+//const apiUrl = "http://localhost:3000/api/login"; // Replace with your actual API endpoint URL
 
+//app.get("/" ,(req,res)=> res.send("hello"));
 // Home Page - Dashboard
 router.get('/',  (req, res, next) => {
-    res.render('index');
+   
+  res.render('index');
 });
 
 // Login Form
-router.get('/login', (req, res, next) => {
-    res.render('login');
-});
+router.post('/api/login', (req, res, next) => {
+    const username = req.body.username;
+    const password = req.body.password;
+  
+    // Perform authentication logic and validation here
+  
+    // Example response for successful login
+    const response = {
+      success: true,
+      message: 'Login successful',
+      data: {
+        username: username
+      }
+    };
+  
+    res.json(response);
+  });
+  
 
 // Register Form
 router.get('/register', (req, res, next) => {
@@ -57,6 +75,7 @@ router.get('/complaint',  (req, res, next) => {
 
 //Register a Complaint
 router.post('/registerComplaint', (req, res, next) => {
+    
     const name = req.body.name;
     const email = req.body.email;
     const contact = req.body.contact;
@@ -67,9 +86,9 @@ router.post('/registerComplaint', (req, res, next) => {
 
     req.checkBody('contact', 'Contact field is required').notEmpty();
     req.checkBody('desc', 'Description field is required').notEmpty();
-
+    
     let errors = req.validationErrors();
-
+    
     if (errors) {
         res.render('complaint', {
             errors: errors
@@ -86,7 +105,7 @@ router.post('/registerComplaint', (req, res, next) => {
             if (err) throw err;
             req.flash('success_msg', 'You have successfully launched a complaint');
             res.redirect('/');
-        });
+            });
     }
 });
 
